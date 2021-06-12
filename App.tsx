@@ -37,14 +37,14 @@ export default function App() {
             inactiveTintColor: 'gray',
           }}
         >
-          {/* <Tab.Screen 
+          <Tab.Screen 
             name="Train"
             component={Train}
           />
           <Tab.Screen 
             name="Message"
             component={Message}
-          /> */}
+          />
           <Tab.Screen 
             name="Discover"
             component={DiscoverTrainers}
