@@ -37,7 +37,6 @@ export default function TrainerCard(props:any) {
           </Button>
         </CardItem>
       </Card>
-      <Text>Content goes here</Text>
     </Content>
   );
 }

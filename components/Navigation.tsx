@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { 
   Footer, FooterTab, 
-  Text, Button, Icon,
+  Text, Button, Icon, Container,
 } from 'native-base';
 
 export default function Navigation() {
