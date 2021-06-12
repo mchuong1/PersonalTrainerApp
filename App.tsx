@@ -5,6 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import DiscoverTrainers from './pages/DiscoverTrainers';
+import Profile from './pages/Profile';
+import Message from './pages/Message';
+import Train from './pages/Train';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,23 +18,36 @@ export default function App() {
       <Container>
         <Tab.Navigator
           screenOptions={({ route }) => ({
-            tabBarIcon: ({focused, color, size }) => {
+            tabBarIcon: ({ focused }) => {
               let iconName;
 
               if (route.name === 'Discover')
                 iconName = focused ? 'globe' : 'globe-outline';
-              
-                return <Icon name={iconName} color={color} fontSize={size} />
+              if (route.name === 'Profile')
+                iconName = focused ? 'person-circle' : 'person-circle-outline';
+              if (route.name === 'Message')
+                iconName = focused ? 'chatbox-ellipses' : 'chatbox-ellipses-outline';
+              if (route.name === 'Train')
+                iconName = focused ? 'barbell' : 'barbell-outline';
+              return <Icon style={focused ? styles.active: styles.inactive} name={iconName} />
             }
           })}
-          tabBarOptions={{
-            activeTintColor: '#687089',
-            inactiveTintColor: 'yellow',
-          }}
         >
+          <Tab.Screen 
+            name="Train"
+            component={Train}
+          />
+          <Tab.Screen 
+            name="Message"
+            component={Message}
+          />
           <Tab.Screen 
             name="Discover"
             component={DiscoverTrainers}
+          />
+          <Tab.Screen 
+            name="Profile"
+            component={Profile}
           />
         </Tab.Navigator>
       </Container>
@@ -50,4 +66,10 @@ const styles = StyleSheet.create({
     height: 200,
     flex: 1
   },
+  active: {
+    color: '#414759'
+  },
+  inactive: {
+    color: '#687089'
+  }
 });
