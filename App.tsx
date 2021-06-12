@@ -1,13 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Image } from 'react-native';
+import { 
+  Container, Footer, FooterTab, 
+  Text, Button, Content,
+  Icon, Card, CardItem,
+} from 'native-base';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import TrainerCard from './components/TrainerCard';
+import Navigation from './components/Navigation';
+
+const Stack = createStackNavigator();
 
 export default function App() {
+
+  const data = {
+    name: 'James Marcus',
+    imageUri: 'https://fitnesstrainer.imgix.net/uploads/instructor/picture/23339/img1.jpg?auto=format%2Cenhance%2Credeye',
+    distance: '3 miles',
+    trainingAreas: ['Gym', 'Home', 'Virtual'],
+    hourlyRate: '40.00'
+  }
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Container>
+        <TrainerCard data={data}/>
+        <Navigation />
+      </Container>
+    </NavigationContainer>
   );
 }
 
@@ -17,5 +41,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  image: {
+    height: 200,
+    flex: 1
   },
 });
